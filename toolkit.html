@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Social Media Content Toolkit — Complete System for Consistent Content</title>
+    <meta name="description" content="30-day content calendar, 50 viral hooks, 100 caption templates, hashtag playbook. Everything you need to post consistently and grow.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --purple: #6C5CE7;
+            --purple-light: #A29BFE;
+            --purple-dark: #5541D7;
+            --black: #0a0a0a;
+            --dark: #111;
+            --gray: #888;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--black); color: #fff; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        
+        .hero { padding: 80px 0 60px; text-align: center; }
+        .badge {
+            display: inline-block; background: rgba(108,92,231,0.15); color: var(--purple);
+            padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;
+            margin-bottom: 24px; border: 1px solid rgba(108,92,231,0.3);
+        }
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 56px); font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--purple-light) 50%, var(--purple) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero p { font-size: 18px; color: var(--gray); max-width: 560px; margin: 0 auto 32px; }
+        .price-tag { font-size: 48px; font-weight: 900; color: var(--purple); margin-bottom: 8px; }
+        .price-sub { font-size: 14px; color: var(--gray); margin-bottom: 32px; }
+        .cta-btn {
+            display: inline-block; background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            color: #fff; padding: 16px 48px; border-radius: 8px; font-size: 18px; font-weight: 700;
+            text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 24px rgba(108,92,231,0.3);
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,92,231,0.4); }
+
+        .stats {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+            padding: 40px 0; border-top: 1px solid #222; border-bottom: 1px solid #222; margin: 40px 0;
+        }
+        .stat { text-align: center; }
+        .stat-num { font-size: 32px; font-weight: 900; color: var(--purple); }
+        .stat-label { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+        .section { padding: 60px 0; }
+        .section-title { font-size: 32px; font-weight: 800; margin-bottom: 12px; text-align: center; }
+        .section-sub { color: var(--gray); text-align: center; margin-bottom: 40px; }
+
+        .parts { display: grid; gap: 16px; }
+        .part-card {
+            background: #161616; border: 1px solid #222; border-radius: 12px; padding: 28px;
+            display: grid; grid-template-columns: 60px 1fr; gap: 20px; align-items: start;
+            transition: border-color 0.3s;
+        }
+        .part-card:hover { border-color: var(--purple); }
+        .part-num {
+            font-size: 36px; font-weight: 900; color: var(--purple); opacity: 0.7;
+            line-height: 1;
+        }
+        .part-name { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+        .part-desc { font-size: 14px; color: var(--gray); line-height: 1.5; }
+        .part-highlight { color: var(--purple-light); font-weight: 600; font-size: 13px; margin-top: 8px; }
+
+        .sample-box {
+            background: #161616; border: 1px solid #222; border-radius: 12px; padding: 32px; margin: 40px 0;
+        }
+        .sample-label { font-size: 12px; font-weight: 600; color: var(--purple); letter-spacing: 1px; margin-bottom: 16px; }
+        .sample-box h4 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .sample-prompt {
+            background: #1e1e2e; border-radius: 8px; padding: 20px;
+            font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; color: #cdd6f4; white-space: pre-wrap;
+        }
+
+        .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .who-card {
+            background: #161616; border: 1px solid #222; border-radius: 10px; padding: 20px; text-align: center;
+        }
+        .who-emoji { font-size: 32px; margin-bottom: 8px; }
+        .who-title { font-weight: 700; margin-bottom: 4px; }
+        .who-desc { font-size: 13px; color: var(--gray); }
+
+        .bundle-box {
+            background: linear-gradient(135deg, rgba(108,92,231,0.1) 0%, rgba(212,175,55,0.1) 100%);
+            border: 1px solid rgba(108,92,231,0.3); border-radius: 12px; padding: 32px; text-align: center; margin: 40px 0;
+        }
+        .bundle-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+        .bundle-price { font-size: 36px; font-weight: 900; color: var(--purple); }
+        .bundle-orig { text-decoration: line-through; color: var(--gray); font-size: 18px; margin-left: 8px; }
+        .bundle-desc { color: var(--gray); margin: 12px 0 20px; font-size: 14px; }
+
+        .cta-section { text-align: center; padding: 80px 0; }
+        .cta-section h2 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
+        .cta-section p { color: var(--gray); margin-bottom: 32px; }
+
+        footer { text-align: center; padding: 40px 0; color: #444; font-size: 13px; border-top: 1px solid #1a1a1a; }
+        .back-link { display: inline-block; color: var(--gray); text-decoration: none; margin-bottom: 24px; font-size: 14px; }
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 600px) {
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .part-card { grid-template-columns: 1fr; }
+            .part-num { font-size: 24px; }
+            .who-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="container">
+        <a href="/" class="back-link">← Back to Midas Digital</a>
+        <div class="badge">📱 COMPLETE CONTENT SYSTEM</div>
+        <h1>The Social Media Content Toolkit</h1>
+        <p>Stop staring at a blank screen. Get a complete system — calendar, hooks, captions, hashtags, and frameworks — that turns "what do I post?" into "which great idea do I use today?"</p>
+        <div class="price-tag">$19</div>
+        <div class="price-sub">One-time purchase · Instant download · Free lifetime updates</div>
+        <a href="#buy" class="cta-btn">Get the Toolkit →</a>
+    </div>
+</section>
+
+<div class="container">
+    <div class="stats">
+        <div class="stat"><div class="stat-num">30</div><div class="stat-label">Day Calendar</div></div>
+        <div class="stat"><div class="stat-num">50</div><div class="stat-label">Viral Hooks</div></div>
+        <div class="stat"><div class="stat-num">100</div><div class="stat-label">Caption Templates</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-label">Parts</div></div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">What's Inside</h2>
+        <p class="section-sub">Six parts. One system. Infinite content.</p>
+
+        <div class="parts">
+            <div class="part-card">
+                <div class="part-num">01</div>
+                <div>
+                    <div class="part-name">📅 30-Day Content Calendar</div>
+                    <div class="part-desc">Day-by-day plan with content types, topics, and goals. Uses the 4-1-2-1 rule: Educate, Sell, Engage, Grow. Just fill in your niche and go.</div>
+                    <div class="part-highlight">+ Customizable blank calendar template</div>
+                </div>
+            </div>
+            <div class="part-card">
+                <div class="part-num">02</div>
+                <div>
+                    <div class="part-name">🔥 50 Viral Hook Templates</div>
+                    <div class="part-desc">Curiosity hooks, story hooks, listicle hooks, question hooks, and authority hooks. Each with explanation of WHY it works, not just what to say.</div>
+                    <div class="part-highlight">Stop the scroll in 3 seconds</div>
+                </div>
+            </div>
+            <div class="part-card">
+                <div class="part-num">03</div>
+                <div>
+                    <div class="part-name">✍️ 100 Caption Templates</div>
+                    <div class="part-desc">Organized by goal: Grow (reach), Engage (community), Educate (authority), Sell (revenue). Fill in the brackets, post, done.</div>
+                    <div class="part-highlight">+ CTA Bank with 20+ call-to-action formulas</div>
+                </div>
+            </div>
+            <div class="part-card">
+                <div class="part-num">04</div>
+                <div>
+                    <div class="part-name">#️⃣ Hashtag Strategy Playbook</div>
+                    <div class="part-desc">The 3-tier hashtag system, pre-built hashtag sets for popular niches, research templates, and the do's and don'ts that prevent shadowbans.</div>
+                    <div class="part-highlight">Pre-built sets for 3 niches included</div>
+                </div>
+            </div>
+            <div class="part-card">
+                <div class="part-num">05</div>
+                <div>
+                    <div class="part-name">🎨 Carousel & Post Frameworks</div>
+                    <div class="part-desc">The Value Ladder (10 slides), Story Arc (8 slides), single image templates, and the 60-second Reel formula. Design rules included.</div>
+                    <div class="part-highlight">Works for IG, TikTok, LinkedIn, X, YouTube</div>
+                </div>
+            </div>
+            <div class="part-card">
+                <div class="part-num">06</div>
+                <div>
+                    <div class="part-name">📊 Analytics Tracker (Bonus)</div>
+                    <div class="part-desc">Weekly metrics template, monthly review framework, and content performance scorecard with a scoring formula that predicts algorithm boost.</div>
+                    <div class="part-highlight">Know exactly what's working and why</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="sample-box">
+        <div class="sample-label">📋 SAMPLE CAPTION TEMPLATE</div>
+        <h4>The Value Stack (Sell Caption #80)</h4>
+        <div class="sample-prompt">What you get with [product]:
+
+✅ [Item 1] (worth $[X])
+✅ [Item 2] (worth $[X])
+✅ [Item 3] (worth $[X])
+✅ [Item 4] (worth $[X])
+✅ [Bonus] (worth $[X])
+
+Total value: $[big number]
+Your price: $[small number]
+
+This is not a drill.
+
+[CTA: Grab it before I come to my senses — link in bio]</div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Who It's For</h2>
+        <p class="section-sub">If you post on social media for money or growth, this is for you.</p>
+        <div class="who-grid">
+            <div class="who-card">
+                <div class="who-emoji">🧑‍💻</div>
+                <div class="who-title">Solopreneurs</div>
+                <div class="who-desc">Stop spending 2 hours on one post. Use the system.</div>
+            </div>
+            <div class="who-card">
+                <div class="who-emoji">📱</div>
+                <div class="who-title">Content Creators</div>
+                <div class="who-desc">Never run out of ideas. 30 days planned in 30 minutes.</div>
+            </div>
+            <div class="who-card">
+                <div class="who-emoji">🏪</div>
+                <div class="who-title">Small Business Owners</div>
+                <div class="who-desc">Post consistently without hiring a social media manager.</div>
+            </div>
+            <div class="who-card">
+                <div class="who-emoji">📊</div>
+                <div class="who-title">Social Media Managers</div>
+                <div class="who-desc">Templates for clients. Bill for strategy, not writing time.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="bundle-box">
+        <div class="bundle-title">🔥 BUNDLE DEAL</div>
+        <div>
+            <span class="bundle-price">$24</span>
+            <span class="bundle-orig">$28</span>
+        </div>
+        <div class="bundle-desc">Get the Social Media Toolkit + The Freelancer's AI Prompt Vault together and save.</div>
+        <a href="#buy" class="cta-btn">Get the Bundle →</a>
+    </div>
+</div>
+
+<section class="cta-section" id="buy">
+    <div class="container">
+        <h2>Stop Overthinking. Start Posting.</h2>
+        <p>Calendar. Hooks. Captions. Hashtags. Frameworks. Analytics. All in one toolkit.</p>
+        <div class="price-tag">$19</div>
+        <div class="price-sub" style="margin-bottom: 24px;">Instant download · PDF + Markdown · Free updates forever</div>
+        <a href="mailto:talmerri@gmail.com?subject=Social%20Media%20Toolkit%20Purchase&body=I%20want%20to%20purchase%20The%20Social%20Media%20Content%20Toolkit!" class="cta-btn">Buy Now →</a>
+        <p style="margin-top: 16px; font-size: 13px; color: #555;">Payment setup in progress — email to reserve your copy</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p><a href="/" style="color: #555; text-decoration: none;">Midas Digital</a> · © 2026 · Everything you touch turns to gold.</p>
+    </div>
+</footer>
+
+</body>
+</html>
