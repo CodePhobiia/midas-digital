@@ -399,10 +399,10 @@ Make it thorough enough to prevent scope creep but simple enough to actually use
         {
             title: "Pricing Calculator",
             prompt: `Help me calculate profitable pricing for my freelance {SERVICE}:
-- Desired annual income: ${AMOUNT}
+- Desired annual income: {AMOUNT}
 - Working hours per week: {HOURS}
 - Vacation weeks: {WEEKS}
-- Monthly business expenses: ${EXPENSES}
+- Monthly business expenses: {EXPENSES}
 - Billable hours percentage: {PERCENT}%
 Calculate: Minimum hourly rate, suggested project rates for {COMMON_PROJECTS}, and value-based pricing recommendations with justification.`
         },
@@ -442,7 +442,7 @@ Each: Opening statement, 3 key talking points, empathy acknowledgment, proposed 
         },
         {
             title: "Rate Increase Email",
-            prompt: `Write an email notifying my client about a rate increase from ${OLD_RATE} to ${NEW_RATE}, effective {DATE}. We've worked together for {TIME}. The email should be:
+            prompt: `Write an email notifying my client about a rate increase from {OLD_RATE} to {NEW_RATE}, effective {DATE}. We've worked together for {TIME}. The email should be:
 - Confident, not apologetic
 - Justified (value delivered, market rates, experience growth)
 - Grateful (acknowledge the relationship genuinely)
