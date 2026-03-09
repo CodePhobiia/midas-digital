@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Prompt Generator for Freelancers — Midas Digital</title>
+    <meta name="description" content="Generate battle-tested AI prompts for freelancing, marketing, content creation, and more. Free tool by Midas Digital.">
+    <meta name="keywords" content="AI prompt generator, ChatGPT prompts, freelancer prompts, free AI tools, prompt templates">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold: #D4AF37; --gold-light: #F4E5A3; --black: #0a0a0a; --dark: #111; --gray: #888; }
+        body { font-family: 'Inter', sans-serif; background: var(--black); color: #fff; line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+        
+        header { padding: 40px 0 20px; text-align: center; }
+        header a { color: var(--gray); text-decoration: none; font-size: 14px; }
+        header a:hover { color: #fff; }
+        h1 { font-size: 32px; font-weight: 900; margin: 20px 0 8px; }
+        h1 span { background: linear-gradient(135deg, #fff, var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: var(--gray); margin-bottom: 32px; }
+
+        .generator { background: #111; border: 1px solid #222; border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+        
+        label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; color: #ccc; }
+        
+        select, input {
+            width: 100%; padding: 12px 16px; background: #1a1a1a; border: 1px solid #333;
+            border-radius: 8px; color: #fff; font-size: 15px; font-family: inherit;
+            margin-bottom: 20px; appearance: none; cursor: pointer;
+        }
+        select:focus, input:focus { outline: none; border-color: var(--gold); }
+        select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+
+        .btn-generate {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, var(--gold), #B8960C);
+            color: #000; border: none; border-radius: 8px; font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: all 0.3s; font-family: inherit;
+        }
+        .btn-generate:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(212,175,55,0.3); }
+
+        .output { display: none; margin-top: 24px; }
+        .output.show { display: block; }
+        .output-box {
+            background: #1e1e2e; border-radius: 8px; padding: 20px; font-family: 'Courier New', monospace;
+            font-size: 13px; line-height: 1.6; color: #cdd6f4; white-space: pre-wrap;
+            position: relative; min-height: 100px;
+        }
+        .copy-btn {
+            position: absolute; top: 12px; right: 12px; padding: 6px 14px;
+            background: rgba(212,175,55,0.2); color: var(--gold); border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+        }
+        .copy-btn:hover { background: rgba(212,175,55,0.3); }
+
+        .upsell {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05));
+            border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 24px;
+            text-align: center; margin-top: 24px;
+        }
+        .upsell h3 { font-size: 18px; margin-bottom: 8px; }
+        .upsell p { color: var(--gray); font-size: 14px; margin-bottom: 16px; }
+        .upsell a {
+            display: inline-block; padding: 10px 28px; background: var(--gold); color: #000;
+            border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14px;
+        }
+
+        .counter { text-align: center; padding: 20px 0; color: #333; font-size: 13px; }
+        
+        footer { text-align: center; padding: 40px 0; color: #333; font-size: 13px; }
+        footer a { color: #555; text-decoration: none; }
+        
+        .seo-content { max-width: 700px; margin: 0 auto; padding: 40px 24px; }
+        .seo-content h2 { font-size: 22px; margin-bottom: 12px; color: #ddd; }
+        .seo-content p { color: #666; font-size: 14px; margin-bottom: 16px; line-height: 1.7; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="/midas-digital/">👑 Midas Digital</a>
+        <h1><span>Free AI Prompt Generator</span></h1>
+        <p class="subtitle">Generate battle-tested prompts for any freelancing task. Powered by frameworks that work.</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="generator">
+        <label>What do you need?</label>
+        <select id="category">
+            <option value="">Choose a category...</option>
+            <option value="outreach">📧 Client Outreach & Cold Emails</option>
+            <option value="proposal">📝 Proposals & Pitches</option>
+            <option value="content">✍️ Content & Copywriting</option>
+            <option value="social">📱 Social Media Posts</option>
+            <option value="email">📧 Email Marketing</option>
+            <option value="seo">🔍 SEO & Blog Writing</option>
+            <option value="business">⚙️ Business Operations</option>
+            <option value="client">💬 Client Communication</option>
+        </select>
+
+        <label>Your niche / service (optional)</label>
+        <input type="text" id="niche" placeholder="e.g., web design, copywriting, photography...">
+
+        <label>Target audience (optional)</label>
+        <input type="text" id="audience" placeholder="e.g., small businesses, startups, e-commerce...">
+
+        <button class="btn-generate" onclick="generatePrompt()">✨ Generate Prompt</button>
+
+        <div class="output" id="output">
+            <div class="output-box" id="promptBox">
+                <button class="copy-btn" onclick="copyPrompt()">📋 Copy</button>
+                <div id="promptText"></div>
+            </div>
+            <p style="margin-top: 12px; font-size: 12px; color: #555; text-align: center;">
+                🔄 Click generate again for a different prompt
+            </p>
+        </div>
+    </div>
+
+    <div class="upsell" id="upsell" style="display:none;">
+        <h3>⚡ Want 150 More Like This?</h3>
+        <p>The Freelancer's AI Prompt Vault has 150 battle-tested prompts across 10 categories. Stop generating one at a time — get the full system.</p>
+        <a href="/midas-digital/prompt-vault.html">Get the Full Vault — $9 →</a>
+    </div>
+
+    <div class="counter" id="counter"></div>
+</div>
+
+<div class="seo-content">
+    <h2>What is the AI Prompt Generator?</h2>
+    <p>The Midas AI Prompt Generator creates structured, ready-to-use prompts for ChatGPT, Claude, Gemini, and any other large language model. Each prompt is built on proven frameworks that produce high-quality, actionable output — not generic "write me a thing" results.</p>
+    
+    <h2>Who is this for?</h2>
+    <p>Freelancers, solopreneurs, content creators, marketers, and anyone who uses AI tools daily. Whether you need to write a cold outreach email, create a blog post, build a social media strategy, or handle a difficult client conversation, there's a prompt for that.</p>
+
+    <h2>How does it work?</h2>
+    <p>Select a category, optionally add your niche and target audience, and click generate. The tool creates a customized prompt template you can copy directly into your AI tool of choice. Fill in the [brackets] with your specific details and get instant results.</p>
+
+    <h2>Why structured prompts matter</h2>
+    <p>The difference between a good AI output and a great one is the prompt. Structured prompts with specific instructions, desired format, tone guidance, and context produce dramatically better results. Our prompts are built on prompt engineering principles tested across thousands of use cases.</p>
+</div>
+
+<footer>
+    <div class="container">
+        <p><a href="/midas-digital/">Midas Digital</a> · Free tools for freelancers · © 2026</p>
+    </div>
+</footer>
+
+<script>
+const prompts = {
+    outreach: [
+        {
+            title: "Cold Outreach Email",
+            prompt: `Act as a freelance business development expert. Write a cold outreach email to a {INDUSTRY} company that needs {SERVICE}. The email should:
+- Be under 150 words
+- Lead with a specific pain point they likely have
+- Reference something specific about their business
+- Include a soft CTA (no hard sell)
+- Sound human, not templated
+Tone: Professional but warm. No corporate jargon.`
+        },
+        {
+            title: "LinkedIn Connection Message",
+            prompt: `Write a LinkedIn connection request message (under 300 characters) to a {JOB_TITLE} at a {COMPANY_TYPE}. I'm a freelance {SERVICE}. Don't pitch — just start a genuine conversation. Reference a shared interest or their recent content.`
+        },
+        {
+            title: "Follow-Up Sequence",
+            prompt: `Create a 3-email follow-up sequence for a prospect who hasn't responded to my initial outreach. I'm a freelance {SERVICE} and I contacted them about {TOPIC}. Each email should:
+- Email 1 (3 days later): Add new value, don't just "bump"
+- Email 2 (7 days later): Share a relevant case study or insight
+- Email 3 (14 days later): Breakup email with a door left open
+Keep each under 100 words.`
+        },
+        {
+            title: "Upwork Proposal Writer",
+            prompt: `Write a winning Upwork proposal for this job: {JOB_DESCRIPTION}. My relevant experience: {EXPERIENCE}. The proposal should:
+- Open with understanding their problem (not "Dear Hiring Manager")
+- Show I've read the full posting (reference specific details)
+- Include 1-2 relevant results I've achieved
+- Ask a smart question that shows expertise
+- Be under 200 words
+- End with clear next step`
+        },
+        {
+            title: "Referral Request",
+            prompt: `Write an email to a past client asking for referrals. We worked together on {PROJECT} and the result was {RESULT}. The email should:
+- Thank them genuinely
+- Remind them of the results without bragging
+- Make the ask easy and specific (who exactly to refer)
+- Offer something in return (discount on future work)
+- Be under 120 words`
+        }
+    ],
+    proposal: [
+        {
+            title: "Full Project Proposal",
+            prompt: `Write a freelance proposal for this project: {PROJECT_DESCRIPTION}. Structure it as:
+1. Understanding of their problem (show I listened)
+2. My proposed solution (specific, not vague)
+3. Process & timeline with milestones
+4. Investment & what's included (3 tiers: Basic, Standard, Premium)
+5. Why me (brief, proof-driven)
+6. Next steps
+Tone: Confident, not arrogant. Professional, not corporate.`
+        },
+        {
+            title: "Pricing Strategy",
+            prompt: `Help me price this freelance project: {PROJECT_DESCRIPTION}. My experience level: {LEVEL}. Consider:
+- Value-based pricing vs hourly
+- What the deliverable is worth to the client
+- What competitors charge
+- My cost of delivery
+Give me 3 pricing tiers (Basic, Standard, Premium) with clear differentiation between each.`
+        },
+        {
+            title: "Objection Handler",
+            prompt: `List the 10 most common objections a {CLIENT_TYPE} would have when hiring a freelance {SERVICE}, and write a response for each that:
+- Acknowledges the concern genuinely
+- Reframes it as an advantage
+- Provides proof or logic
+- Redirects to value delivered
+Keep each response under 3 sentences.`
+        },
+        {
+            title: "Discovery Call Script",
+            prompt: `Create a 30-minute discovery call script for a potential {SERVICE} client:
+- Opening: Build rapport (3 min)
+- Discovery: 10 smart questions that uncover budget, timeline, and decision process (15 min)
+- Present: My approach, not a pitch (7 min)
+- Close: Next steps and timeline (5 min)
+Make the questions feel conversational, not interrogative.`
+        }
+    ],
+    content: [
+        {
+            title: "Blog Post Writer",
+            prompt: `Write a {LENGTH}-word blog post on "{TOPIC}" for {AUDIENCE}. Style: {STYLE}. Include:
+- Hook opening (no generic "In today's world...")
+- Actionable advice with specific examples
+- At least 3 subheadings for scanability
+- Bullet points where appropriate
+- Compelling conclusion with a clear CTA
+SEO keyword: {KEYWORD} — use naturally 3-5 times.`
+        },
+        {
+            title: "Landing Page Copy",
+            prompt: `Write landing page copy for {PRODUCT_SERVICE}. Target audience: {AUDIENCE}. Structure:
+1. Hero: Headline + subheadline + CTA button text
+2. Pain points (3-4 specific frustrations)
+3. Solution introduction
+4. Features → Benefits (6 items, benefit-first)
+5. Social proof section
+6. FAQ (5 questions that handle objections)
+7. Final CTA with urgency element
+Every word earns its place. No filler.`
+        },
+        {
+            title: "Content Repurposer",
+            prompt: `Take this content: {PASTE_CONTENT}. Repurpose it into:
+1. Twitter/X thread (8-10 tweets, each stands alone)
+2. LinkedIn post (professional, story-driven)
+3. Instagram carousel text (10 slides)
+4. 60-second video script (hook, value, CTA)
+5. Email newsletter snippet (300 words)
+Maintain the core message but adapt tone and format for each platform.`
+        },
+        {
+            title: "Email Sales Sequence",
+            prompt: `Write a 5-email sales sequence for {PRODUCT_SERVICE} targeting {AUDIENCE}:
+- Email 1: Problem awareness (no pitch, just value)
+- Email 2: Agitate the problem + introduce solution
+- Email 3: Social proof + case study
+- Email 4: Overcome the top 3 objections
+- Email 5: Final CTA + urgency/scarcity
+Each email: Subject line (3 options) + body (200-300 words). Include personalization tokens.`
+        }
+    ],
+    social: [
+        {
+            title: "Instagram Caption Pack",
+            prompt: `Write 5 Instagram caption variations for a post about {TOPIC}. Include:
+- Hook first line (makes people tap "more")
+- Value or story in the body
+- CTA (save, share, comment, or link in bio)
+- 20 relevant hashtags (mix of big, medium, niche)
+Each caption: 150-300 words. Voice: {VOICE_STYLE}.`
+        },
+        {
+            title: "Twitter/X Thread",
+            prompt: `Write a Twitter/X thread (10-12 tweets) about {TOPIC}. Rules:
+- Tweet 1: Irresistible hook (pattern interrupt)
+- Each tweet stands alone but flows as narrative
+- Mix insights, data, and personal opinions
+- Use line breaks for readability
+- Tweet 11: Summary for scroll-to-bottom readers
+- Tweet 12: CTA (follow, RT, link)
+No hashtags in threads. They look desperate.`
+        },
+        {
+            title: "Viral Reel/TikTok Script",
+            prompt: `Write 3 short-form video scripts (30-60 seconds each) about {TOPIC} for {PLATFORM}. Each script:
+- Hook (0-3 sec): Stop the scroll — text overlay + spoken word
+- Setup (3-15 sec): Quick context
+- Value (15-45 sec): The meat — 3 points max
+- CTA (45-60 sec): Follow, save, or link
+Include: on-screen text suggestions and visual direction notes.`
+        },
+        {
+            title: "30-Day Content Ideas",
+            prompt: `Generate a 30-day content calendar for {PLATFORM} in the {NICHE} space. For each day include:
+- Content type (carousel, reel, text post, story)
+- Topic (specific, not vague)
+- Hook line (first sentence)
+- Goal: Grow / Engage / Educate / Sell
+Weekly mix: 4 Educate, 2 Engage, 1 Grow, 1 Sell.`
+        }
+    ],
+    email: [
+        {
+            title: "Welcome Sequence",
+            prompt: `Write a 5-email welcome sequence for new subscribers to my {NICHE} email list:
+- Email 1 (immediate): Deliver the lead magnet + introduce yourself
+- Email 2 (Day 1): Your origin story + your best free content
+- Email 3 (Day 3): Common mistake in {NICHE} (pure value)
+- Email 4 (Day 5): Case study / success story
+- Email 5 (Day 7): Soft pitch for {PRODUCT}
+Each: 3 subject line options + body (200-300 words).`
+        },
+        {
+            title: "Launch Sequence",
+            prompt: `Write a 7-email product launch sequence for {PRODUCT} in {NICHE}:
+- Emails 1-2: Build anticipation (pre-launch teaser)
+- Email 3: Launch day — doors open, full pitch
+- Email 4: Social proof, FAQ, objection handling
+- Email 5: Deep dive case study
+- Email 6: Overcome final objections
+- Email 7: Last chance — doors closing
+Urgency should escalate throughout. Each: subject line + body.`
+        },
+        {
+            title: "Newsletter Template",
+            prompt: `Create a reusable weekly newsletter template for my {NICHE} audience:
+- Opening: Personal observation (3-4 sentences, conversational)
+- Section 1: Main insight or lesson of the week
+- Section 2: Tool or resource recommendation
+- Section 3: Quick tip or actionable hack
+- Section 4: What I'm consuming (reading/watching/listening)
+- CTA + sign-off
+Fill it in with an example about {TOPIC}. Voice: like a smart friend, not a corporation.`
+        }
+    ],
+    seo: [
+        {
+            title: "SEO Blog Post",
+            prompt: `Write a fully SEO-optimized blog post on "{TOPIC}". Target keyword: "{KEYWORD}". Include:
+- Title tag (under 60 chars, keyword front-loaded)
+- Meta description (155 chars with CTA)
+- H1, H2, H3 structure with related keywords
+- Natural keyword density (1-2%, not stuffed)
+- Internal linking suggestions (3-4)
+- Schema markup recommendation
+- Alt text suggestions for 3 images
+Length: {WORD_COUNT} words. Make it genuinely useful.`
+        },
+        {
+            title: "Content Cluster Strategy",
+            prompt: `Create a topic cluster around "{PILLAR_TOPIC}" for {NICHE}:
+- Pillar page outline (comprehensive, 3000+ word guide)
+- 10 cluster articles with specific titles
+- Internal linking map (what links where)
+- Content brief for each cluster article (keyword, intent, word count)
+- Publishing priority order (what to write first)
+Goal: Dominate page 1 for "{MAIN_KEYWORD}".`
+        },
+        {
+            title: "Keyword Research Guide",
+            prompt: `Act as an SEO expert for {NICHE} targeting {AUDIENCE}. Suggest:
+- 10 high-volume keywords (informational intent)
+- 10 long-tail keywords (commercial intent — people ready to buy)
+- 5 question keywords (for featured snippet opportunities)
+- 5 "vs" comparison keywords
+For each: estimated difficulty (low/med/high), search intent, and recommended content format.`
+        }
+    ],
+    business: [
+        {
+            title: "Client Onboarding Process",
+            prompt: `Create a professional client onboarding process for my freelance {SERVICE} business:
+- Step-by-step workflow (contract → kickoff → delivery)
+- Welcome packet contents (what to include)
+- Kickoff questionnaire (10 essential questions)
+- Project setup checklist
+- Communication expectations document
+- Tool access requirements
+Make it thorough enough to prevent scope creep but simple enough to actually use.`
+        },
+        {
+            title: "Pricing Calculator",
+            prompt: `Help me calculate profitable pricing for my freelance {SERVICE}:
+- Desired annual income: ${AMOUNT}
+- Working hours per week: {HOURS}
+- Vacation weeks: {WEEKS}
+- Monthly business expenses: ${EXPENSES}
+- Billable hours percentage: {PERCENT}%
+Calculate: Minimum hourly rate, suggested project rates for {COMMON_PROJECTS}, and value-based pricing recommendations with justification.`
+        },
+        {
+            title: "Standard Operating Procedure",
+            prompt: `Write an SOP for {PROCESS} in my freelance business:
+- Purpose and scope
+- Step-by-step instructions (detailed enough to delegate)
+- Tools and resources needed at each step
+- Quality checkpoints
+- Common issues and troubleshooting
+- Time estimate per step
+Format it so a subcontractor could follow it without asking questions.`
+        }
+    ],
+    client: [
+        {
+            title: "Scope Creep Response",
+            prompt: `Write a tactful response to a client who's asking for {ADDITIONAL_WORK} that's outside the original scope of {PROJECT}. The response should:
+- Acknowledge the request warmly
+- Reference the original agreement
+- Explain why this is additional scope (educate, don't lecture)
+- Offer two options: add to scope with pricing, or save for phase 2
+- Maintain the relationship
+- Include language that prevents this from happening again`
+        },
+        {
+            title: "Difficult Conversation Scripts",
+            prompt: `Write scripts for these difficult client conversations:
+1. Notifying about a project delay
+2. Discussing a budget overrun
+3. Pushing back on creative direction
+4. Ending the client relationship professionally
+5. Declining additional work
+
+Each: Opening statement, 3 key talking points, empathy acknowledgment, proposed solution, and closing. Firm but respectful — never burn bridges.`
+        },
+        {
+            title: "Rate Increase Email",
+            prompt: `Write an email notifying my client about a rate increase from ${OLD_RATE} to ${NEW_RATE}, effective {DATE}. We've worked together for {TIME}. The email should be:
+- Confident, not apologetic
+- Justified (value delivered, market rates, experience growth)
+- Grateful (acknowledge the relationship genuinely)
+- Clear about timing (grandfather current projects)
+- Open to discussion but firm on the direction
+Under 200 words.`
+        }
+    ]
+};
+
+let generateCount = 0;
+
+function generatePrompt() {
+    const category = document.getElementById('category').value;
+    const niche = document.getElementById('niche').value;
+    const audience = document.getElementById('audience').value;
+    
+    if (!category) {
+        alert('Please select a category first!');
+        return;
+    }
+
+    const categoryPrompts = prompts[category];
+    const selected = categoryPrompts[Math.floor(Math.random() * categoryPrompts.length)];
+    
+    let prompt = selected.prompt;
+    
+    // Replace placeholders with user input if provided
+    if (niche) {
+        prompt = prompt.replace(/{SERVICE}/g, niche)
+            .replace(/{NICHE}/g, niche)
+            .replace(/{TOPIC}/g, niche)
+            .replace(/{PRODUCT_SERVICE}/g, niche)
+            .replace(/{PRODUCT}/g, niche);
+    }
+    if (audience) {
+        prompt = prompt.replace(/{AUDIENCE}/g, audience)
+            .replace(/{CLIENT_TYPE}/g, audience)
+            .replace(/{INDUSTRY}/g, audience);
+    }
+
+    document.getElementById('promptText').textContent = prompt;
+    document.getElementById('output').classList.add('show');
+    
+    generateCount++;
+    
+    // Show upsell after 2 generations
+    if (generateCount >= 2) {
+        document.getElementById('upsell').style.display = 'block';
+    }
+    
+    document.getElementById('counter').textContent = `${generateCount} prompt${generateCount > 1 ? 's' : ''} generated this session`;
+}
+
+function copyPrompt() {
+    const text = document.getElementById('promptText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy', 2000);
+    });
+}
+</script>
+
+</body>
+</html>
